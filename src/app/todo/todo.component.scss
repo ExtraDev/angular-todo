@@ -13,3 +13,13 @@
         margin: 0;
     }
 }
+
+.todo-tile:hover {
+    cursor: pointer;
+    background-color: rgb(211, 211, 211);
+}
+
+.done {
+    opacity: 0.5;
+    text-decoration: line-through;
+}

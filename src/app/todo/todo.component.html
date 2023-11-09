@@ -1,7 +1,11 @@
 @if(todo) {
-    <div class="todo-tile">
-        <input type="checkbox" name="" id="">
-        <h3>{{todo.name}}</h3>
-        <p>{{todo.description}}</p>
-    </div>
+<div class="todo-tile" [ngClass]="{'done':todo.status}" (click)="toggleTodo()">
+    @if(!todo.status) {
+        <img ngSrc="assets/empty-checkbox.svg"  width="20" height="20" alt="empty">
+    } @else {
+        <img ngSrc="assets/checked-checkbox.svg"  width="20" height="20" alt="empty">
+    }
+    <h3>{{todo.name}}</h3>
+    <p>{{todo.description}}</p>
+</div>
 }
