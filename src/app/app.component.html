@@ -1,5 +1,17 @@
 <div class="todo-container">
   <h1>Todo list</h1>
+  <h2>Create todo</h2>
+
+  <form action="" [formGroup]="todoForm" (ngSubmit)="addTodo()">
+    <div class="form-block">
+      <label for="">Todo Name</label>
+      <input type="text" name="" id="" formControlName="name">
+    </div>
+
+    <button [disabled]="!todoForm.valid">Add todo</button>
+  </form>
+
+  <h2>Actual todos</h2>
   @for(todo of todos; track todo.id) {
     <app-todo [todo]="todo"/>
   }

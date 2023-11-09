@@ -11,4 +11,13 @@ export class TodoService {
     getTodos(): Todo[] {
         return this.todos;
     }
+
+    addTodo(name: string): void {
+        this.todos.push({
+            id: this.todos.length,
+            name: name, 
+            description: '',
+            status: false
+        })
+    }
 }
