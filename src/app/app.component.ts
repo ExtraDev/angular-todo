@@ -27,6 +27,13 @@ export class AppComponent {
       this.todoService.addTodo(this.todoForm.value.name);
       this.todos = this.todoService.getTodos();
       this.todoForm.reset();
+      this.orderList();
     }
+  }
+
+  orderList() {
+    this.todos = this.todos.sort(value => {
+      return value ? 1: -1;
+    })
   }
 }
