@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { TodoComponent } from './todo/todo.component';
+import { TodoService } from './shared/todo.service';
+import { Todo } from './shared/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-todo';
-  isRunning = true;
+  todoService = inject(TodoService)
+  todos: Todo[];
+
+  constructor(){
+    this.todos = this.todoService.getTodos();
+    console.log(this.todos);
+  }
 }
