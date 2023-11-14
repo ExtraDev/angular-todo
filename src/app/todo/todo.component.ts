@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, Signal, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Todo } from '../shared/todo.model';
 import { NgOptimizedImage } from '@angular/common';
@@ -10,12 +10,17 @@ import { NgOptimizedImage } from '@angular/common';
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
-export class TodoComponent {
+export class TodoComponent implements OnInit {
   @Input() todo!: Todo;
+  todoIsDone = signal(false);
 
-  constructor() { }
+  constructor() {}
+
+  ngOnInit(): void {
+    this.todoIsDone.set(this.todo.status)
+  }
 
   toggleTodo() {
-    this.todo.status = !this.todo.status
+    this.todoIsDone.set(!this.todoIsDone())
   }
 }

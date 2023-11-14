@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { TodoService } from './shared/todo.service';
 import { Todo } from './shared/todo.model';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -27,13 +27,10 @@ export class AppComponent {
       this.todoService.addTodo(this.todoForm.value.name);
       this.todos = this.todoService.getTodos();
       this.todoForm.reset();
-      this.orderList();
     }
   }
 
-  orderList() {
-    this.todos = this.todos.sort(value => {
-      return value ? 1: -1;
-    })
-  }
+  countTaskDone = computed(() => {
+    return this.todos.filter(todo => todo.status).length;
+  })
 }

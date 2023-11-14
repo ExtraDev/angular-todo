@@ -1,6 +1,6 @@
 @if(todo) {
-<div class="todo-tile" [ngClass]="{'done':todo.status}" (click)="toggleTodo()">
-    @if(!todo.status) {
+<div class="todo-tile" [ngClass]="{'done':todoIsDone()}" (click)="toggleTodo()">
+    @if(!todoIsDone()) {
         <img ngSrc="assets/empty-checkbox.svg"  width="20" height="20" alt="empty">
     } @else {
         <img ngSrc="assets/checked-checkbox.svg"  width="20" height="20" alt="empty">

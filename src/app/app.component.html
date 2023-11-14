@@ -13,6 +13,6 @@
 
   <h2>Actual todos</h2>
   @for(todo of todos; track todo.id) {
-    <app-todo (click)="orderList()" [todo]="todo"/>
+    <app-todo  [todo]="todo"/>
   }
 </div>
